@@ -10,6 +10,9 @@ using AgkCommons.Input.Gesture.Model.Gestures;
 using IoC.Attribute;
 using AgkCommons.Input.Gesture.Service;
 using BezierSolution;
+using DronDonDon.Core.Audio;
+using DronDonDon.Core.Audio.Model;
+using DronDonDon.Core.Audio.Service;
 using DronDonDon.Location.Service;
 using DronDonDon.Location.World.Dron.Service;
 using DronDonDon.World;
@@ -44,7 +47,10 @@ namespace DronDonDon.Location.World.Dron
         
         [Inject]
         private GameService _gameService;
-
+        
+        [Inject] 
+        private SoundService _soundService;
+        
         public WorldObjectType ObjectType { get; private set; }
         public void Init(DronModel  model)
         {
@@ -108,12 +114,20 @@ namespace DronDonDon.Location.World.Dron
             _bezier.enabled=false;
         }
         
+        private void PlaySound(Sound sound)
+        {
+            _soundService.StopAllSounds();
+            _soundService.PlaySound(sound);
+        }
+
+        
         private void OnSwiped(Swipe swipe)
         {
             if (!_isShifting && _isGameRun)
             {
                 _lastWorkSwipe = swipe;
                 ShiftNewPosition(NumberSwipedToSector(swipe));
+                PlaySound(GameSounds.SHIFT);
             }
         }
         

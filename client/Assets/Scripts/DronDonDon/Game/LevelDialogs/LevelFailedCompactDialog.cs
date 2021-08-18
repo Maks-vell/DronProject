@@ -6,6 +6,9 @@ using AgkUI.Dialog.Attributes;
 using AgkUI.Dialog.Service;
 using AgkUI.Element.Text;
 using AgkUI.Screens.Service;
+using DronDonDon.Core.Audio;
+using DronDonDon.Core.Audio.Model;
+using DronDonDon.Core.Audio.Service;
 using DronDonDon.Core.UI.Dialog;
 using DronDonDon.Game.Levels.Service;
 using DronDonDon.MainMenu.UI.Screen;
@@ -35,6 +38,9 @@ namespace DronDonDon.Game.LevelDialogs
         [Inject]
         private LevelService _levelService;
         
+        [Inject] 
+        private SoundService _soundService;
+        
         [UIComponentBinding("FailReasonTitle")]
         private UILabel _failReasonLabel;
         
@@ -46,8 +52,15 @@ namespace DronDonDon.Game.LevelDialogs
 
             _failReason = failReason;
             SetDialogLabels();
+            PlaySound(GameSounds.FAILED);
         }
-
+        
+        private void PlaySound(Sound sound)
+        {
+            _soundService.StopAllSounds();
+            _soundService.PlaySound(sound);
+        }
+        
         [UIOnClick("RestartButton")]
         private void RestartButtonClicked()
         {

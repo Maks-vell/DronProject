@@ -30,6 +30,15 @@ namespace DronDonDon.Core.Audio
 
             public static readonly Sound SHOW_DIALOG =
                 new Sound("sndShowDialog", "Audio/Sound/sndShowDialog@embeded", 9, false);
+            
+            public static readonly Sound VICTORY =
+                new Sound("sndVictory", "Audio/Sound/sndVictory@embeded", 10, false);
+            
+            public static readonly Sound FAILED =
+                new Sound("sndFailed", "Audio/Sound/sndFailed@embeded", 11, false);
+            
+            public static readonly Sound SHIFT =
+                new Sound("sndShift", "Audio/Sound/sndShift@embeded", 12, false);
         }
     
 }

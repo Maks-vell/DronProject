@@ -8,6 +8,9 @@ using AgkUI.Dialog.Service;
 using AgkUI.Element.Buttons;
 using AgkUI.Element.Text;
 using AgkUI.Screens.Service;
+using DronDonDon.Core.Audio;
+using DronDonDon.Core.Audio.Model;
+using DronDonDon.Core.Audio.Service;
 using DronDonDon.Core.UI.Dialog;
 using DronDonDon.Game.Levels.IoC;
 using DronDonDon.Game.Levels.Model;
@@ -83,7 +86,10 @@ namespace DronDonDon.Game.LevelDialogs
 
         [UIComponentBinding("TasksCompletedTitle")]
         private UILabel _tasksCompletedLabel;
-
+        
+        [Inject] 
+        private SoundService _soundService;
+        
         [UICreated]
         public void Init()
         {
@@ -125,8 +131,15 @@ namespace DronDonDon.Game.LevelDialogs
             SetDialogStars();
             SetDialogLabels();
             SetButtons();
+            PlaySound(GameSounds.VICTORY);
         }
         
+        private void PlaySound(Sound sound)
+        {
+            _soundService.StopAllSounds();
+            _soundService.PlaySound(sound);
+        }
+
         private void SetDialogStars()
         {
             _chipsStar.Interactable = false;
