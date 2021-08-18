@@ -1,0 +1,43 @@
+<linker>
+	<assembly fullname="IoC" preserve="all">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+	
+	<assembly fullname="Adept.Ags.Client" preserve="all">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+	
+	<assembly fullname="System">
+        <type fullname="System.ComponentModel.TypeConverter" preserve="all" />
+    <!-- <namespace fullname="System.ComponentModel" preserve="all" /> -->
+	</assembly>
+	
+	<assembly fullname="log4net" preserve="all">
+    </assembly>
+	
+    <assembly fullname="log4net.Ext.Json" preserve="all">
+    </assembly>
+	
+    <assembly fullname="Adept.Logger" preserve="all">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+
+	<!--FOR UI PARTICLE SYSTEM-->
+	<!--
+    <assembly fullname="UnityEngine.ParticleSystemModule">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+
+	  <assembly fullname="UnityEngine.UI">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+	 <assembly fullname="UnityEngine.CoreModule">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+
+	 <assembly fullname="UnityEngine.SharedInternalsModule">
+        <type fullname="*" preserve="all"/>
+    </assembly>
+	-->
+
+</linker>

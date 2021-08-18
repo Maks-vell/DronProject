@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <shop>
+        <shopItem id="dron1" name ="DronV1.0" type="0" price="0" model="Embeded/UI/RenderTextures/txDron1Texture" energy = "Embeded/UI/Texture/txEnergyBarDron1" durability = "Embeded/UI/Texture/txDurabilityBarDron2"/>
+        <shopItem id="dron2" name ="DronV2.0" type="0" price="256" model="Embeded/UI/RenderTextures/txDron2Texture" energy = "Embeded/UI/Texture/txEnergyBarDron1" durability = "Embeded/UI/Texture/txDurabilityBarDron2"/>
+        <shopItem id="dron3" name ="DronV3.0" type="0" price="128" model="Embeded/UI/RenderTextures/txDron3Texture" energy = "Embeded/UI/Texture/txEnergyBarDron1" durability = "Embeded/UI/Texture/txDurabilityBarDron2"/>
+    </shop>
+</config>

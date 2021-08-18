@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <drons>
+        <dron id="dron1" title="Dron 1" energy="8" durability="80" mobility="2" prefab="Embeded/World/Location/FBX/DronPrefabs/fbDron"/>
+        <dron id="dron2" title="Dron 2" energy="8" durability="100" mobility="5" prefab="Embeded/World/Location/FBX/DronPrefabs/fbDron0.2"/>
+        <dron id="dron3" title="Dron 3" energy="8" durability="60" mobility="3" prefab="Embeded/World/Location/FBX/DronPrefabs/fbDron0.3"/>
+    </drons>
+</config>

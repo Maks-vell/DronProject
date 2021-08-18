@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <levels>
+        <level> 
+            <id>level1</id>
+            <order>1</order> 
+            <prefab>Levels/pfLevel1@embeded</prefab>
+            <time>50</time>
+            <durability>60</durability> 
+            <chips>37</chips>
+            <title>Level1</title>  
+            <image>Embeded/UI/Texture/txEverydayCargo</image>
+            <skybox>SkyBoxes/Skybox Cubemap Extended Day</skybox>>
+            <intensity>1,3</intensity>
+            <color>Colors/DayColor</color>
+            <description>Для своей бабушки-гика в качестве подарка на день рождения внук заказал инкубатор.</description>
+        </level>
+        <level>
+            <id>level2</id>
+            <order>2</order>
+            <prefab>Levels/pfLevel2@embeded</prefab>
+            <time>50</time>
+            <durability>70</durability>
+            <chips>50</chips>
+            <title>Level2</title>
+            <image>Embeded/UI/Texture/txMedicineCargo</image>
+            <skybox>SkyBoxes/Skybox Cubemap Extended Night</skybox>>
+            <intensity>0,8</intensity>
+            <color>Colors/NightColor</color>
+            <description>Пётр Иванович сделал через сервис Pharm.Helper. Мы должны доставить ему лекарственные средства для лечения сосудистого заболевания.</description>
+        </level>
+        <level>
+            <id>level3</id>
+            <order>3</order>
+            <prefab>Levels/pfLevel3@embeded</prefab>
+            <time>2</time>
+            <durability>50</durability>
+            <chips>50</chips>
+            <title>Level3</title>
+            <image>Embeded/UI/Texture/txEverydayCargo</image>
+            <skybox>SkyBoxes/Skybox Cubemap Extended Night</skybox>>
+            <intensity>0,6</intensity>
+            <color>Colors/NightColor2</color>
+            <description>Друзья Кондратий и Виктор открывают новый коворкинг. Нужно доставить партию новых настольных игр.</description>
+        </level>
+        <level>
+            <id>level4</id>
+            <order>4</order>
+            <prefab>Levels/pfLevel4@embeded</prefab>
+            <time>2</time>
+            <durability>55</durability>
+            <chips>50</chips>
+            <title>Level4</title>
+            <image>Embeded/UI/Texture/txEverydayCargo</image>
+            <skybox>SkyBoxes/Skybox Cubemap Extended Day</skybox>>
+            <intensity>1,2</intensity>
+            <color>Colors/DayColor</color>
+            <description>Нужно доставить запчасти для дрона в ремонтную мастерскую.</description>
+        </level>
+        <level>
+            <id>level5</id>
+            <order>5</order>
+            <prefab>Levels/pfLevel1@embeded</prefab>
+            <time>3</time>
+            <durability>50</durability>
+            <chips>50</chips>
+            <title>Level5</title>
+            <image>Embeded/UI/Texture/txFoodCargo</image>
+            <skybox>SkyBoxes/Skybox Cubemap Extended Blend</skybox>>
+            <intensity>1,8</intensity>
+            <color>Colors/RedColor</color>
+            <description>Максим и Юля вывели цыплят в инкубаторе и заказали партию свежих перепелиных яиц.</description>
+        </level>
+    </levels>
+</config>

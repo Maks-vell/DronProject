@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>manifest</key>
+        <dict>
+            <key>appURL</key>
+            <string>https://static-test-avataria3d.tortugasocial.com/client/ios/avataria3d.ipa</string>
+            <key>displayImageURL</key>
+            <string>https://static-test-avataria3d.tortugasocial.com/client/ios/avataria3d57.png</string>
+            <key>fullSizeImageURL</key>
+            <string>https://static-test-avataria3d.tortugasocial.com/client/ios/avataria3d512.png</string>
+        </dict>
+        <key>method</key>
+        <string>ad-hoc</string>
+        <key>uploadSymbols</key>
+        <false/>
+</dict>
+</plist>

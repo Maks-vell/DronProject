@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <projectName>dronDonDon</projectName>    
+    <buildName>release-0.0.1</buildName>
+    <platform>android</platform>
+    <version>0.0.0</version>    
+	<production>false</production>
+    <graphicsQualityLevel>Normal</graphicsQualityLevel>
+    <showConsole>false</showConsole>
+    <languages>
+        <lang id="EN"/>
+        <lang id="RU"/>
+    </languages>
+
+	<activeLogger>nlog</activeLogger>
+	<nlog>
+		<extensions>
+			<add assembly="Adept.Logger"/>
+		</extensions>
+		<targets>
+			<target name="logstash" type="Network" address="udp://127.0.0.1:5142">
+				<layout type="JsonLayout" includeAllProperties="true" IncludeGdc="true">
+					<!--  STATIC  -->
+					<attribute name="project" layout="dronDonDon"/>
+					<attribute name="version" layout="0.0.0"/>
+					<attribute name="buildName" layout="dronDonDon"/>
+					<attribute name="platform" layout="windows"/>
+					<attribute name="stage" layout="none"/>
+					<!--  MESSAGE FORMAT  -->
+					<attribute name="logDate" layout="${date:format=yyyy-MM-ddTHH\:mm\:ss.fffZ}"/>
+					<attribute name="level" layout="${level:upperCase=true}"/>
+					<attribute name="message" layout="${message} ${exception}"/>
+					<attribute name="classMethod" layout="${stacktrace:skipFrames=2}"/>
+					<attribute name="LoggerName" layout="${logger}"/>
+					<attribute name="exceptionInfo" layout="${exception:format=toString,StackTrace}"/>
+					<attribute name="exceptionType" layout="${exception:format=Type}"/>
+				</layout>
+			</target>
+			<target name="console" type="UnityConsoleTarget" layout="[${level:uppercase=true}]|${logger}|${message}|${exception:format=toString,StackTrace}"/>
+		</targets>
+		<rules>
+			<logger minlevel="TRACE"/>
+			<logger name="*" minlevel="TRACE" writeTo="console"/>
+			<logger name="*" minlevel="NONE" writeTo="logstash"/>
+		</rules>
+	</nlog>
+
+</config>

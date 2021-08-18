@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <billing>
+        <billingItem id = "fewCredits" credits = "10" price = "0,00" icon = "Embeded/UI/Texture/txBlueIconChip"/>
+        <billingItem id = "someCredits" credits = "50" price = "0,00" icon = "Embeded/UI/Texture/txGreenIconChip"/>
+        <billingItem id = "mediumCredits" credits = "100" price = "0,00" icon = "Embeded/UI/Texture/txYellowIconChip"/>
+        <billingItem id = "largeCredits" credits = "500" price = "0,00" icon = "Embeded/UI/Texture/txRedIconChip"/>
+    </billing>
+</config>

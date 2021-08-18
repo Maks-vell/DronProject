@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tortuga.dronDonDon</groupId>
+    <artifactId>dronDonDon-client</artifactId>
+    <version>${buildVersion}</version>
+    <name>dronDonDon-client</name>
+    <properties>
+        <buildVersion>0.0.1</buildVersion>
+        <platform>windows</platform>
+        <production>false</production>
+        <skipReplace>false</skipReplace>
+        <buildName>dronDonDon-${version}-${platform}</buildName>
+        <finalName>${artifactId}-${version}-${platform}</finalName>
+        <profiler>false</profiler>
+        <buildGPGS>false</buildGPGS>
+        <skipLibraryClean>true</skipLibraryClean>
+        <skipCleanResources>true</skipCleanResources>
+        <resources>false</resources>
+        <skipTest>true</skipTest>
+        <profiler>false</profiler>
+        <projectName>dronDonDon</projectName>
+        <client>true</client>
+        <useResolver>false</useResolver>
+        <androidWebClientId>344286988292-rjhr5idbirvi3fglciaocrin9lv1dr9v.apps.googleusercontent.com</androidWebClientId>
+        <unityPath>/Applications/Unity/Hub/Editor/2020.1.16f1/Unity.app/Contents/MacOS/</unityPath>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>resources</id>
+            <properties>
+                <resources>true</resources>
+                <client>false</client>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <skipMain>true</skipMain>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <skipIfEmpty>true</skipIfEmpty>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <id>ReplaceConfigUrl</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skipReplace}</skip>
+                            <file>Assets/Resources/Configs/LocalConfig.xml</file>
+                            <replacements>
+                                <replacement>
+                                    <token><![CDATA[<param name=\\"platform\\".*>]]></token>
+                                    <value><![CDATA[<param name=\\"platform\\" value=\\"${platform}\\" />]]></value>
+                                </replacement>
+                                <replacement>
+                                    <token><![CDATA[<param name=\\"version\\".*>]]></token>
+                                    <value><![CDATA[<param name=\\"version\\" value=\\"${version}\\" />]]></value>
+                                </replacement>
+                                <replacement>
+                                    <token><![CDATA[<param name=\\"buildName\\".*>]]></token>
+                                    <value><![CDATA[<param name=\\"buildName\\" value=\\"${buildName}\\" />]]></value>
+                                </replacement>
+                                <replacement>
+                                    <token><![CDATA[<param name=\\"production\\".*>]]></token>
+                                    <value><![CDATA[<param name=\\"production\\" value=\\"${production}\\" />]]></value>
+                                </replacement>
+                            </replacements>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <excludeDefaultDirectories>${skipCleanResources}</excludeDefaultDirectories>
+                    <filesets>
+                        <fileset>
+                            <directory>target</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>resources/**</exclude>
+                            </excludes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>cleanAll</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>Assets/Runtime/Plugins/</directory>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                    <excludes>
+                                        <!--<exclude>**/important.log</exclude>-->
+                                    </excludes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <directory>Assets/Plugins/</directory>
+                                    <includes>
+                                        <include>Android/**</include>
+                                        <include>UnityChannel/**</include>
+                                        <include>Parse/**</include>
+                                        <include>Parse.meta</include>
+                                        <include>iOS/**</include>
+                                    </includes>
+                                    <excludes>
+                                        <exclude>Android/AndroidManifest.xml</exclude>
+                                        <exclude>Android/AndroidManifest.xml.meta</exclude>
+                                        <exclude>Android/mainTemplate.gradle</exclude>
+                                        <exclude>Android/mainTemplate.gradle.meta</exclude>
+                                        <exclude>iOS/Settings.bundle/**</exclude>
+                                        <exclude>iOS/Settings.bundle.meta</exclude>
+                                    </excludes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <directory>Assets/</directory>
+                                    <includes>
+                                        <include>PlayServicesResolver/**</include>
+                                        <include>PlayServicesResolver.meta</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>cleanLibrary</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skipLibraryClean}</skip>
+                            <filesets>
+                                <fileset>
+                                    <directory>Library/</directory>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>com.keyboardsamurais.maven</groupId>
+                <artifactId>maven-timestamp-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <propertyName>timestamp</propertyName>
+                    <timestampPattern>HHmmss</timestampPattern>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-client</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <skipAssembly>${resources}</skipAssembly>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>./mavenConfigs/${platform}.xml</descriptor>
+                            </descriptors>
+                            <finalName>${finalName}</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.tortuga.plugin</groupId>
+                <artifactId>unity-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unity-dependencies</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>test</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>test-unity</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skipTest}</skip>
+                            <profiler>${profiler}</profiler>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>build</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>build-unity</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${resources}</skip>
+                            <platform>${platform}</platform>
+                            <useResolver>false</useResolver>
+                            <exportFile>${project.basedir}/mavenConfigs/export.plist</exportFile>
+                            <keystorePassword>NcDvq1Io</keystorePassword>
+                            <keyAliasPassword>NcDvq1Io</keyAliasPassword>
+                            <scenesToBuild>${scenes}</scenesToBuild>
+                            <facebookSDK>false</facebookSDK>
+                            <androidWebClientId>${androidWebClientId}</androidWebClientId>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>build-resource</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>build-resource-unity</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${client}</skip>
+                            <platform>${platform}</platform>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.tortuga.unity</groupId>
+            <artifactId>ios-tools</artifactId>
+            <version>0.1.7</version>
+            <type>upl</type>
+            <classifier>unity-runtime-plugin</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.demigiant</groupId>
+            <artifactId>dotween</artifactId>
+            <version>1.1.310-5</version>
+            <type>upl</type>
+            <classifier>unity-runtime-plugin</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rsg</groupId>
+            <artifactId>promises</artifactId>
+            <version>3.0.1.1</version>
+            <type>upl</type>
+            <classifier>unity-runtime-plugin</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tortuga.preconditions</groupId>
+            <artifactId>cs-preconditions</artifactId>
+            <version>0.1.1</version>
+            <type>dll</type>
+            <classifier>unity-runtime-plugin</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.tortuga.unity</groupId>
+            <artifactId>console</artifactId>
+            <version>0.0.22</version>
+            <type>upl</type>
+            <classifier>unity-plugin</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.tortuga.unity</groupId>
+            <artifactId>ui-particles</artifactId>
+            <version>1.0.4.2</version>
+            <type>upl</type>
+            <classifier>unity-plugin</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.tortuga.unity</groupId>
+            <artifactId>ios-deeplink</artifactId>
+            <version>0.0.8</version>
+            <type>upl</type>
+            <classifier>unity-runtime-plugin</classifier>
+        </dependency>
+        
+
+    </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>tortuga-snapshots</id>
+            <url>${deploy.url}</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+        <repository>
+            <id>tortuga-releases</id>
+            <name>Releases</name>
+            <url>${deploy.url.release}</url>
+            <uniqueVersion>false</uniqueVersion>
+        </repository>
+    </distributionManagement>
+
+</project>
