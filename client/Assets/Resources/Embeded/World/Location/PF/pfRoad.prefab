@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1011088053604778418}
   - component: {fileID: 3021049431506154872}
   m_Layer: 0
-  m_Name: fbRoad
+  m_Name: pfRoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
